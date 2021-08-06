@@ -25,6 +25,7 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
                 You are signed in as: {userInfo.username}
               </Navbar.Text>
             )}
+            {/* If logged in, show Log Out button or if logged out, show Sign Up and Log In buttons */}
             {loggedIn ? (
               <>
                 <LinkContainer to="/">
