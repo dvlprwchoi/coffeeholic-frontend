@@ -18,7 +18,7 @@ const Login = ({ _handleSetLogIn }) => {
   };
 
   // Getting auth token with log in information
-  const _handleLogin = async (e) => {
+  const _handleLogIn = async (e) => {
     e.preventDefault();
     console.log('You have submitted a form.');
     try {
@@ -46,7 +46,7 @@ const Login = ({ _handleSetLogIn }) => {
   return (
     <div>
       <h3>Log In Page</h3>
-      <Form onSubmit={_handleLogin}>
+      <Form onSubmit={_handleLogIn}>
         <Form.Group controlId="email">
           <Form.Label>E-mail</Form.Label>
           <Form.Control
