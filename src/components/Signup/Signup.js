@@ -33,6 +33,25 @@ const Signup = () => {
 
   const _handleSignUp = async (e) => {
     e.preventDefault();
+    console.log(formData);
+    try {
+      const response = await fetch('http://localhost:8000/users/', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response);
+      if (response.status === 201) {
+        setSuccess(true);
+        setTimeout(() => {
+          history.push('/login');
+        }, 3000);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
