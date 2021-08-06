@@ -17,9 +17,23 @@ const Login = () => {
     });
   };
 
-  const _handleLogin = (e) => {
+  // Getting auth token with log in information
+  const _handleLogin = async (e) => {
     e.preventDefault();
     console.log('You have submitted a form.');
+    try {
+      const response = await fetch('http://localhost:8000/token/login', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const token = await response.json();
+      console.log(token);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
