@@ -29,11 +29,15 @@ const Login = ({ _handleSetLogIn }) => {
           'Content-Type': 'application/json',
         },
       });
-      const token = await response.json();
-      console.log(token);
-      // Passing _handleSetLogIn from app.js
-      _handleSetLogIn(token.auth_token);
-      history.push('/');
+      if (response.status === 200) {
+        const token = await response.json();
+        console.log(token);
+        // Passing _handleSetLogIn from app.js
+        _handleSetLogIn(token.auth_token);
+        history.push('/');
+      } else {
+        alert('Your email or password is incorrect. Try it again!');
+      }
     } catch (error) {
       console.error(error);
     }
