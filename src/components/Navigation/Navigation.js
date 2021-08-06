@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
+const Navigation = ({ loggedIn, _handleLogOut, userInfo }) => {
   return (
     <Navbar bg="light" expand="lg" collapseOnSelect={true}>
       <Container>
@@ -29,7 +29,7 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
             {loggedIn ? (
               <>
                 <LinkContainer to="/">
-                  <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
+                  <Nav.Link onClick={_handleLogOut}>Log Out</Nav.Link>
                 </LinkContainer>
               </>
             ) : (
