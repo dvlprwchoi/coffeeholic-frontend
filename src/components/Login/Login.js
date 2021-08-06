@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
-const Login = () => {
+const Login = ({ _handleSetLogIn }) => {
   const initialFormData = {
     email: '',
     password: '',
@@ -31,6 +31,9 @@ const Login = () => {
       });
       const token = await response.json();
       console.log(token);
+      // Passing _handleSetLogIn from app.js
+      _handleSetLogIn(token.auth_token);
+      history.push('/');
     } catch (error) {
       console.error(error);
     }

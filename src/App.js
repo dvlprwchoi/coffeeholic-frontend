@@ -9,13 +9,23 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem('token') ? true : false
   );
+
+  // Handler function for local storage
+  const _handleSetLogIn = (authToken) => {
+    setLoggedIn(true);
+    localStorage.setItem('token', authToken);
+  };
+
   return (
     <div className="App">
       <Navigation loggedIn={loggedIn} />
       Hello World
       <Container>
         <Switch>
-          <Route path="/login" render={() => <Login />} />
+          <Route
+            path="/login"
+            render={() => <Login _handleSetLogIn={_handleSetLogIn} />}
+          />
         </Switch>
       </Container>
     </div>
