@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 import { Container } from 'react-bootstrap';
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             path="/login"
             render={() => <Login _handleSetLogIn={_handleSetLogIn} />}
           />
+          <Route path="/signup" render={() => <Signup />} />
         </Switch>
       </Container>
     </div>
