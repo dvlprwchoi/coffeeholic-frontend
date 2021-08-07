@@ -10,6 +10,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem('token') ? true : false
   );
+  // UserInfo display
+  const [userInfo, setUserInfo] = useState(null);
+
   // Handler function for Log Out
   const _handleLogOut = async () => {
     try {
@@ -25,6 +28,8 @@ function App() {
         localStorage.removeItem('token');
         // reset loggedIn state
         setLoggedIn(false);
+        // clearing user info display when logging out
+        setUserInfo(null);
       } else {
         alert('Something went wrong... Please try it again!');
       }
@@ -37,11 +42,38 @@ function App() {
   const _handleSetLogIn = (authToken) => {
     setLoggedIn(true);
     localStorage.setItem('token', authToken);
+    getUserInfo();
   };
+
+  // Function for userInfo display
+  const getUserInfo = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/users/me', {
+        headers: {
+          Authorization: `Token ${localStorage.getItem('token')}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      setUserInfo(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (loggedIn) {
+      getUserInfo();
+    }
+  }, []);
 
   return (
     <div className="App">
-      <Navigation loggedIn={loggedIn} _handleLogOut={_handleLogOut} />
+      <Navigation
+        loggedIn={loggedIn}
+        _handleLogOut={_handleLogOut}
+        userInfo={userInfo}
+      />
       Hello World
       <Container>
         <Switch>
