@@ -1,10 +1,11 @@
-import './App.css';
 import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
+import Home from './components/Home/Home';
 import { Container } from 'react-bootstrap';
+import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
@@ -28,7 +29,7 @@ function App() {
         localStorage.removeItem('token');
         // reset loggedIn state
         setLoggedIn(false);
-        // clearing user info display when logging out
+        // clearing user info display when logging outf
         setUserInfo(null);
       } else {
         alert('Something went wrong... Please try it again!');
@@ -74,16 +75,18 @@ function App() {
         _handleLogOut={_handleLogOut}
         userInfo={userInfo}
       />
-      Hello World
-      <Container>
-        <Switch>
-          <Route
-            path="/login"
-            render={() => <Login _handleSetLogIn={_handleSetLogIn} />}
-          />
-          <Route path="/signup" render={() => <Signup />} />
-        </Switch>
-      </Container>
+      <main>
+        <Container>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route
+              path="/login"
+              render={() => <Login _handleSetLogIn={_handleSetLogIn} />}
+            />
+            <Route path="/signup" render={() => <Signup />} />
+          </Switch>
+        </Container>
+      </main>
     </div>
   );
 }
