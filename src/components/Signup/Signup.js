@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { useHistory, Link } from 'react-router-dom';
 
 const Signup = () => {
   const initialFormData = {
@@ -15,6 +15,8 @@ const Signup = () => {
   //   error state and success state -> feedback for user
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  //   password error description
+  const [errorMessage, setErrorMessage] = useState('');
 
   const _handleChange = (e) => {
     setFormData((prevState) => {
@@ -48,6 +50,12 @@ const Signup = () => {
         setTimeout(() => {
           history.push('/login');
         }, 3000);
+      } else {
+        //   Password setting error message
+        const data = await response.json();
+        setError(true);
+        setErrorMessage(data.password[0]);
+        console.log(data);
       }
     } catch (error) {
       console.error(error);
@@ -98,7 +106,21 @@ const Signup = () => {
             onBlur={_handlePasswordCheck}
           />
         </Form.Group>
-        <Button type="submit">Sign Up</Button>
+        <Button type="submit" disabled={error}>
+          Sign Up
+        </Button>
+        {error && (
+          <Alert variant="warning">
+            {errorMessage} Passwords must be matched. Try it again!
+          </Alert>
+        )}
+        {success && (
+          <Alert variant="success">
+            A new user account has been created successfully! You will be
+            automatically redirected to log in page otherwise, you can{' '}
+            {<Link to="/login">CLICK HERE.</Link>}
+          </Alert>
+        )}
       </Form>
     </div>
   );
