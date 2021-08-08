@@ -27,11 +27,6 @@ const Coffeeshops = ({ loggedIn }) => {
   return (
     <Container>
       <h3>Coffee Shops</h3>
-      {loggedIn && (
-        <Link to="coffeeshops/new">
-          <Button>Add a coffee shop</Button>
-        </Link>
-      )}
       <CardGroup>
         <Row>
           {coffeeshops.map((coffeeshop) => {
@@ -47,7 +42,7 @@ const Coffeeshops = ({ loggedIn }) => {
                       <Card.Title>{coffeeshop.name}</Card.Title>
                       {/* <Card.Text>
                         Number of reviews: {coffeeshop.reviews.length}
-                      </Card.Text> */}
+                    </Card.Text> */}
                     </Card.Body>
                   </Card>
                 </Link>
@@ -56,6 +51,11 @@ const Coffeeshops = ({ loggedIn }) => {
           })}
         </Row>
       </CardGroup>
+      {loggedIn && (
+        <Link to="coffeeshops/new">
+          <Button>Add a coffee shop</Button>
+        </Link>
+      )}
     </Container>
   );
 };
