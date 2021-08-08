@@ -85,7 +85,7 @@ function App() {
               render={() => <Login _handleSetLogIn={_handleSetLogIn} />}
             />
             <Route path="/signup" render={() => <Signup />} />
-            <Route path="/coffeeholic" exact component={Coffeeshops} />
+            <Route path="/coffeeshops" exact component={Coffeeshops} />
           </Switch>
         </Container>
       </main>

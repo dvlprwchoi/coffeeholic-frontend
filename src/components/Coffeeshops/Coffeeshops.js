@@ -28,7 +28,7 @@ const Coffeeshops = ({ loggedIn }) => {
     <Container>
       <h3>Coffee Shops</h3>
       {loggedIn && (
-        <Link to="coffeeholic/new">
+        <Link to="coffeeshops/new">
           <Button>Add a coffee shop</Button>
         </Link>
       )}
@@ -38,7 +38,7 @@ const Coffeeshops = ({ loggedIn }) => {
             return (
               <Col key={coffeeshop.id}>
                 <Link
-                  to={`coffeeholic/${coffeeshop.id}`}
+                  to={`coffeeshops/${coffeeshop.id}`}
                   style={{ color: 'brown', textDecoration: 'none' }}
                 >
                   <Card>
