@@ -88,18 +88,18 @@ function App() {
             />
             <Route path="/signup" render={() => <Signup />} />
             <Route
-              path="/coffeeshops"
+              path="/coffeeholic"
               exact
               render={() => <Coffeeshops loggedIn={loggedIn} />}
             />
             <Route
-              path="/coffeeshops/:id"
+              path="/coffeeholic/:id"
               render={() => (
                 <CoffeeshopDetail userInfo={userInfo} loggedIn={loggedIn} />
               )}
             />
             <Route
-              path="/coffeeshops/new"
+              path="/new"
               render={() => <CoffeeshopCreate loggedIn={loggedIn} />}
             />
           </Switch>

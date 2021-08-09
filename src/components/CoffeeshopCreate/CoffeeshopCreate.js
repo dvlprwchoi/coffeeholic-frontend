@@ -37,7 +37,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
         },
       });
       if (response.status === 201) {
-        history.push('/coffeholic');
+        history.push('/coffeeholic');
       }
     } catch (error) {
       console.error(error);

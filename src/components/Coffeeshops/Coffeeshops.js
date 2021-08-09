@@ -33,7 +33,7 @@ const Coffeeshops = ({ loggedIn }) => {
             return (
               <Col key={coffeeshop.id}>
                 <Link
-                  to={`coffeeshops/${coffeeshop.id}`}
+                  to={`coffeeholic/${coffeeshop.id}`}
                   style={{ color: 'brown', textDecoration: 'none' }}
                 >
                   <Card>
@@ -52,8 +52,8 @@ const Coffeeshops = ({ loggedIn }) => {
         </Row>
       </CardGroup>
       {loggedIn && (
-        <Link to="coffeeshops/new">
-          <Button>Add a coffee shop</Button>
+        <Link to="/new">
+          <Button>Add new coffee shop</Button>
         </Link>
       )}
     </Container>
