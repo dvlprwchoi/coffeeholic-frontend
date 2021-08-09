@@ -25,6 +25,22 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     return null;
   }
 
+  // Delete handler function
+  const _handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:8000/coffeeholic/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Token ${localStorage.getItem('token')}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container className="p-5 border rounded-3 bg-light">
       <div className="d-flex justify-content-between">
@@ -34,7 +50,9 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
         {userInfo && userInfo.username === coffeeshop.owner && (
           <div>
             <Button variant="warning">Edit</Button>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={_handleDelete}>
+              Delete
+            </Button>
           </div>
         )}
       </div>
