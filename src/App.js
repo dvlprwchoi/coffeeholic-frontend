@@ -8,6 +8,7 @@ import { Container } from 'react-bootstrap';
 import './App.css';
 import Coffeeshops from './components/Coffeeshops/Coffeeshops';
 import CoffeeshopDetail from './components/CoffeeshopDetail/CoffeeshopDetail';
+import CoffeeshopCreate from './components/CoffeeshopCreate/CoffeeshopCreate';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
@@ -96,6 +97,10 @@ function App() {
               render={() => (
                 <CoffeeshopDetail userInfo={userInfo} loggedIn={loggedIn} />
               )}
+            />
+            <Route
+              path="/coffeeshops/new"
+              render={() => <CoffeeshopCreate loggedIn={loggedIn} />}
             />
           </Switch>
         </Container>
