@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container, Image, Button } from 'react-bootstrap';
 
 const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
+  const history = useHistory();
   const [coffeeshop, setCoffeeshop] = useState(null);
   const { id } = useParams();
   const getCoffeeshopDetail = async () => {
@@ -28,16 +29,26 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   // Delete handler function
   const _handleDelete = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(`http://localhost:8000/coffeeholic/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Token ${localStorage.getItem('token')}`,
-        },
-      });
-    } catch (error) {
-      console.error(error);
+    // Confirmation popup window
+    if (window.confirm('Are you 100% sure??')) {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/coffeeholic/${id}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+          }
+        );
+        // if 204(no content) redirect to coffe shops page
+        if (response.status === 204) {
+          history.push('/coffeeholic');
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
