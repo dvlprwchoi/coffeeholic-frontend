@@ -85,7 +85,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
         <Form.Group controlId="website">
           <Form.Label>Website</Form.Label>
           <Form.Control
-            required
+            // required
             autoFocus
             type="text"
             value={newCoffeeshop.website_url}
@@ -95,7 +95,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
         <Form.Group controlId="photo">
           <Form.Label>Photo</Form.Label>
           <Form.Control
-            required
+            // required
             autoFocus
             type="text"
             value={newCoffeeshop.photo_url}
@@ -113,10 +113,10 @@ const CoffeeshopCreate = ({ loggedIn }) => {
           />
         </Form.Group>
         <Button type="submit" disabled={error}>
-          Submit
+          Post
         </Button>
         {error && (
-          <Alert variant="danger">
+          <Alert variant="warning">
             Oops, something went wrong! Please try again!
           </Alert>
         )}
