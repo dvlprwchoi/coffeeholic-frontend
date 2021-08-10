@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 
 const Login = ({ _handleSetLogIn }) => {
   const initialFormData = {
@@ -45,29 +45,31 @@ const Login = ({ _handleSetLogIn }) => {
 
   return (
     <div>
-      <h3>Log In Page</h3>
-      <Form onSubmit={_handleLogIn}>
-        <Form.Group controlId="email">
-          <Form.Label>E-mail</Form.Label>
-          <Form.Control
-            required
-            autoFocus
-            type="email"
-            value={formData.email}
-            onChange={_handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            required
-            type="password"
-            value={formData.password}
-            onChange={_handleChange}
-          />
-        </Form.Group>
-        <Button type="submit">Log In</Button>
-      </Form>
+      <Container className="p-5 border rounded-3 bg-dark">
+        <h3>Log In Page</h3>
+        <Form onSubmit={_handleLogIn}>
+          <Form.Group controlId="email">
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control
+              required
+              autoFocus
+              type="email"
+              value={formData.email}
+              onChange={_handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              value={formData.password}
+              onChange={_handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Log In</Button>
+        </Form>
+      </Container>
     </div>
   );
 };

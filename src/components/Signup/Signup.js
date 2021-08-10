@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
 
 const Signup = () => {
@@ -64,64 +64,66 @@ const Signup = () => {
 
   return (
     <div>
-      <h3>Sign Up Page</h3>
-      <Form onSubmit={_handleSignUp}>
-        <Form.Group controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            required
-            autoFocus
-            type="text"
-            value={formData.username}
-            onChange={_handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="email">
-          <Form.Label>E-mail</Form.Label>
-          <Form.Control
-            required
-            autoFocus
-            type="email"
-            value={formData.email}
-            onChange={_handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            required
-            type="password"
-            value={formData.password}
-            onChange={_handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="re_password">
-          <Form.Label>Re-type Password</Form.Label>
-          <Form.Control
-            required
-            type="password"
-            value={formData.re_password}
-            onChange={_handleChange}
-            // When user leave the form
-            onBlur={_handlePasswordCheck}
-          />
-        </Form.Group>
-        <Button type="submit" disabled={error}>
-          Sign Up
-        </Button>
-        {error && (
-          <Alert variant="warning">
-            {errorMessage} Passwords must be matched. Try it again!
-          </Alert>
-        )}
-        {success && (
-          <Alert variant="success">
-            A new user account has been created successfully! You will be
-            automatically redirected to log in page otherwise, you can{' '}
-            {<Link to="/login">CLICK HERE.</Link>}
-          </Alert>
-        )}
-      </Form>
+      <Container className="p-5 border rounded-3 bg-dark">
+        <h3>Sign Up Page</h3>
+        <Form onSubmit={_handleSignUp}>
+          <Form.Group controlId="username">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              autoFocus
+              type="text"
+              value={formData.username}
+              onChange={_handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="email">
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control
+              required
+              autoFocus
+              type="email"
+              value={formData.email}
+              onChange={_handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              value={formData.password}
+              onChange={_handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="re_password">
+            <Form.Label>Re-type Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              value={formData.re_password}
+              onChange={_handleChange}
+              // When user leave the form
+              onBlur={_handlePasswordCheck}
+            />
+          </Form.Group>
+          <Button type="submit" disabled={error}>
+            Sign Up
+          </Button>
+          {error && (
+            <Alert variant="warning">
+              {errorMessage} Passwords must be matched. Try it again!
+            </Alert>
+          )}
+          {success && (
+            <Alert variant="success">
+              A new user account has been created successfully! You will be
+              automatically redirected to log in page otherwise, you can{' '}
+              {<Link to="/login">CLICK HERE.</Link>}
+            </Alert>
+          )}
+        </Form>
+      </Container>
     </div>
   );
 };
