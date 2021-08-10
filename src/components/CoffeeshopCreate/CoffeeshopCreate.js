@@ -23,6 +23,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
     setNewCoffeeshop((prevState) => {
       return { ...prevState, [e.target.id]: e.target.value };
     });
+    console.log(newCoffeeshop);
   };
 
   const _handleCreateNew = async (e) => {
@@ -36,6 +37,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
           Authorization: `Token ${localStorage.getItem('token')}`,
         },
       });
+      console.log(response);
       if (response.status === 201) {
         history.push('/coffeeholic');
       }
@@ -82,20 +84,20 @@ const CoffeeshopCreate = ({ loggedIn }) => {
             onChange={_handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="website">
+        <Form.Group controlId="website_url">
           <Form.Label>Website</Form.Label>
           <Form.Control
-            // required
+            required
             autoFocus
             type="text"
             value={newCoffeeshop.website_url}
             onChange={_handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="photo">
+        <Form.Group controlId="photo_url">
           <Form.Label>Photo</Form.Label>
           <Form.Control
-            // required
+            required
             autoFocus
             type="text"
             value={newCoffeeshop.photo_url}
