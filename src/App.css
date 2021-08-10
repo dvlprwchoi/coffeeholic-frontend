@@ -16,3 +16,16 @@ main {
 .p-5 h6 {
   color: bisque;
 }
+
+.about {
+  display: flex;
+  flex-direction: column;
+}
+.textDiv {
+  border: 1px solid bisque;
+  background-color: bisque;
+}
+.about div {
+  color: black;
+  font-size: 24px;
+}

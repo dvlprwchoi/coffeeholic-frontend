@@ -9,6 +9,7 @@ import './App.css';
 import Coffeeshops from './components/Coffeeshops/Coffeeshops';
 import CoffeeshopDetail from './components/CoffeeshopDetail/CoffeeshopDetail';
 import CoffeeshopCreate from './components/CoffeeshopCreate/CoffeeshopCreate';
+import About from './components/About/About';
 
 const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
 
@@ -84,6 +85,7 @@ function App() {
         <Container>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/about" exact component={About} />
             <Route
               path="/login"
               render={() => <Login _handleSetLogIn={_handleSetLogIn} />}

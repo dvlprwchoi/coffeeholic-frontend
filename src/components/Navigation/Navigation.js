@@ -17,6 +17,9 @@ const Navigation = ({ loggedIn, _handleLogOut, userInfo }) => {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link>About</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/coffeeholic">
               <Nav.Link>Coffee Shops</Nav.Link>
             </LinkContainer>
