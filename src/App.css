@@ -1,3 +1,8 @@
 main {
   margin-top: 1rem;
 }
+
+.p-5 h1 {
+  color: bisque;
+  text-align: center;
+}

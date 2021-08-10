@@ -1,13 +1,15 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import coffeeMug from '../../img/hot-cup.png';
 
 const Navigation = ({ loggedIn, _handleLogOut, userInfo }) => {
   return (
     <Navbar bg="light" expand="lg" collapseOnSelect={true}>
       <Container>
+        <Image src={coffeeMug} width="3%" height="3%" />
         <LinkContainer to="/">
-          <Navbar.Brand>Coffeeholic</Navbar.Brand>
+          <Navbar.Brand>COFFEEHOLIC</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

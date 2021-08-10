@@ -25,8 +25,8 @@ const Coffeeshops = ({ loggedIn }) => {
   }
 
   return (
-    <Container>
-      <h3>Coffee Shops</h3>
+    <Container className="p-5 border rounded-3 bg-dark">
+      <h1>Coffee Shops</h1>
       <CardGroup>
         <Row>
           {coffeeshops.map((coffeeshop) => {
