@@ -51,7 +51,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
   }
 
   return (
-    <Container className="p-5 border rounded-3 bg-light">
+    <Container className="p-5 border rounded-3 bg-dark">
       <h1>New coffee shop</h1>
       <Form onSubmit={_handleCreateNew}>
         <Form.Group controlId="name">

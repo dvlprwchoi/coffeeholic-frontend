@@ -118,7 +118,7 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     <div>
       {/* Regular coffee shop detail view */}
       {!edit && (
-        <Container className="p-5 border rounded-3 bg-light">
+        <Container className="p-5 border rounded-3 bg-dark">
           <div className="d-flex justify-content-between">
             <div>
               <h2>{coffeeshop.name}</h2>
@@ -170,7 +170,7 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
       )}{' '}
       {/* Edit mode view*/}
       {edit && (
-        <Container className="p-5 border rounded-3 bg-light">
+        <Container className="p-5 border rounded-3 bg-dark">
           <h1>Update coffee shop</h1>
           <Form onSubmit={_handleUpdate}>
             <Form.Group controlId="name">
