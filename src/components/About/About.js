@@ -5,7 +5,7 @@ import coffeeBeansImg from '../../img/coffee-beans.jpg';
 const About = () => {
   return (
     <Container className="about p-5 border rounded-3 bg-dark">
-      <h1>About Coffeeholic</h1>
+      <h1>About COFFEEHOLIC</h1>
       <div className="imgDiv">
         <Image rounded fluid src={coffeeBeansImg} width="100%" height="30%" />
       </div>
