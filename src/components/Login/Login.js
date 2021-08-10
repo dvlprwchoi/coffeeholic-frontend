@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 const Login = ({ _handleSetLogIn }) => {
   const initialFormData = {
     email: '',
@@ -22,7 +24,7 @@ const Login = ({ _handleSetLogIn }) => {
     e.preventDefault();
     console.log('You have submitted a form.');
     try {
-      const response = await fetch('http://localhost:8000/token/login', {
+      const response = await fetch(API_URL + 'token/login', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {

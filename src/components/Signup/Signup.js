@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Form, Button, Alert, Container } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 const Signup = () => {
   const initialFormData = {
     username: '',
@@ -37,7 +39,7 @@ const Signup = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await fetch('http://localhost:8000/users/', {
+      const response = await fetch(API_URL + 'users/', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {

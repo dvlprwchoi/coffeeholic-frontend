@@ -3,6 +3,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Container, Image, Button, Alert, Form } from 'react-bootstrap';
 // import CoffeeshopEdit from '../CoffeeshopEdit/CoffeeshopEdit';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   // const initialCoffeeshopData = {
   //   name: coffeeshop.name,
@@ -25,7 +27,7 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
 
   const getCoffeeshopDetail = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/coffeeholic/${id}`);
+      const response = await fetch(API_URL + `coffeeholic/${id}`);
       const data = await response.json();
       console.log(response);
 
@@ -63,7 +65,7 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   const _handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8000/coffeeholic/${id}`, {
+      const response = await fetch(API_URL + `coffeeholic/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(initialValue),
         headers: {
@@ -87,16 +89,13 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     // Confirmation popup window
     if (window.confirm('Are you 100% sure??')) {
       try {
-        const response = await fetch(
-          `http://localhost:8000/coffeeholic/${id}`,
-          {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Token ${localStorage.getItem('token')}`,
-            },
-          }
-        );
+        const response = await fetch(API_URL + `coffeeholic/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${localStorage.getItem('token')}`,
+          },
+        });
         // if 204(no content) redirect to coffe shops page
         if (response.status === 204) {
           history.push('/coffeeholic');

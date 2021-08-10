@@ -10,6 +10,8 @@ import Coffeeshops from './components/Coffeeshops/Coffeeshops';
 import CoffeeshopDetail from './components/CoffeeshopDetail/CoffeeshopDetail';
 import CoffeeshopCreate from './components/CoffeeshopCreate/CoffeeshopCreate';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem('token') ? true : false
@@ -20,7 +22,7 @@ function App() {
   // Handler function for Log Out
   const _handleLogOut = async () => {
     try {
-      const response = await fetch('http://localhost:8000/token/logout', {
+      const response = await fetch(API_URL + 'token/logout', {
         method: 'Post',
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
@@ -52,7 +54,7 @@ function App() {
   // Function for userInfo display
   const getUserInfo = async () => {
     try {
-      const response = await fetch('http://localhost:8000/users/me', {
+      const response = await fetch(API_URL + 'users/me', {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
         },

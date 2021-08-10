@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, CardGroup, Button } from 'react-bootstrap';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 const Coffeeshops = ({ loggedIn }) => {
   const [coffeeshops, setCoffeeshops] = useState([]);
 
   const getCoffeeshopsIndex = async () => {
     try {
-      const response = await fetch('http://localhost:8000/coffeeholic/');
+      const response = await fetch(API_URL + 'coffeeholic/');
       const data = await response.json();
       console.log(data);
       setCoffeeshops(data);

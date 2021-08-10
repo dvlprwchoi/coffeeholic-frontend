@@ -3,6 +3,8 @@ import { Redirect, useHistory } from 'react-router-dom';
 // import CoffeeshopForm from '../CoffeeshopForm/CoffeeshopForm';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 
+const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+
 const CoffeeshopCreate = ({ loggedIn }) => {
   const initialCoffeeshopData = {
     name: '',
@@ -29,7 +31,7 @@ const CoffeeshopCreate = ({ loggedIn }) => {
   const _handleCreateNew = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/coffeeholic/', {
+      const response = await fetch(API_URL + 'coffeeholic/', {
         method: 'POST',
         body: JSON.stringify(newCoffeeshop),
         headers: {
