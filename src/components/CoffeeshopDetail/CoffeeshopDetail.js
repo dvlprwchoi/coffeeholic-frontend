@@ -2,8 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Image, Button, Alert, Form } from 'react-bootstrap';
 // import CoffeeshopEdit from '../CoffeeshopEdit/CoffeeshopEdit';
+import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 
 const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+const Google_API = process.env.REACT_APP_GOOGLE_KEY;
+
+////////////////////////////////////////////////////////////////////////////////
+// Google Map
+////////////////////////////////////////////////////////////////////////////////
+const Map = () => {
+  return (
+    <GoogleMap
+      defaultZoom={10}
+      defaultCenter={{ lat: 30.267153, lng: -97.743057 }}
+    />
+  );
+};
+const WrappedMap = withScriptjs(withGoogleMap(Map));
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   // const initialCoffeeshopData = {
@@ -15,7 +32,9 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   //   memo: '',
   // };
 
+  ////////////////////////////////////////////////////////////////////////////////
   // Edit mode state
+  ////////////////////////////////////////////////////////////////////////////////
   const [edit, setEdit] = useState(false);
   // const [update, setUpdate] = useState(initialCoffeeshopData);
   const history = useHistory();
@@ -61,7 +80,9 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     });
   };
 
+  ////////////////////////////////////////////////////////////////////////////////
   // Update handle function
+  ////////////////////////////////////////////////////////////////////////////////
   const _handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -83,7 +104,9 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     getCoffeeshopDetail();
   };
 
+  ////////////////////////////////////////////////////////////////////////////////
   // Delete handler function
+  ////////////////////////////////////////////////////////////////////////////////
   const _handleDelete = async (e) => {
     e.preventDefault();
     // Confirmation popup window
@@ -106,7 +129,9 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
     }
   };
 
+  ////////////////////////////////////////////////////////////////////////////////
   // Edit handler function
+  ////////////////////////////////////////////////////////////////////////////////
   const _handleEdit = async (e) => {
     e.preventDefault();
     setEdit(true);
@@ -141,6 +166,15 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
           <h6>
             Posted on {coffeeshop.posted} by {coffeeshop.owner}
           </h6>
+          <div className="map" style={{ width: '60vw', height: '60vh' }}>
+            <WrappedMap
+              // googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${Google_API}`}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
+              loadingElement={<div style={{ height: '100%' }} />}
+              containerElement={<div style={{ height: '100%' }} />}
+              mapElement={<div style={{ height: '100%' }} />}
+            />
+          </div>
           {/* <h2>Reviews: </h2>
 			{!coffeeshop.reviews.length && <p>No reviews yet!</p>}
 			{loggedIn && <Button>Write a review</Button>}
