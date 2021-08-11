@@ -2,8 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Image, Button, Alert, Form } from 'react-bootstrap';
 // import CoffeeshopEdit from '../CoffeeshopEdit/CoffeeshopEdit';
+import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 
 const API_URL = 'https://boiling-beach-43710.herokuapp.com/';
+const Google_API = '';
+
+////////////////////////////////////////////////////////////////////////////////
+// Google Map
+////////////////////////////////////////////////////////////////////////////////
+const Map = () => {
+  return (
+    <GoogleMap
+      defaultZoom={10}
+      defaultCenter={{ lat: 30.267153, lng: -97.743057 }}
+    />
+  );
+};
+const WrappedMap = withScriptjs(withGoogleMap(Map));
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
   // const initialCoffeeshopData = {
@@ -141,6 +158,14 @@ const CoffeeshopDetail = ({ userInfo, loggedIn }) => {
           <h6>
             Posted on {coffeeshop.posted} by {coffeeshop.owner}
           </h6>
+          <div className="map" style={{ width: '60vw', height: '60vh' }}>
+            <WrappedMap
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
+              loadingElement={<div style={{ height: '100%' }} />}
+              containerElement={<div style={{ height: '100%' }} />}
+              mapElement={<div style={{ height: '100%' }} />}
+            />
+          </div>
           {/* <h2>Reviews: </h2>
 			{!coffeeshop.reviews.length && <p>No reviews yet!</p>}
 			{loggedIn && <Button>Write a review</Button>}
