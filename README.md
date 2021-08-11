@@ -14,7 +14,7 @@
 
 ## Live Link to Coffeholic App
 
-- https://woosik-coffeeholic-numbers.netlify.app/
+- https://woosik-coffeeholic.netlify.app/
 
 ## Technologies
 
